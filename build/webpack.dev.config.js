@@ -5,6 +5,7 @@ const webpackConfig = require('./webpack.config')
 const webpack = require('webpack')
 const merge = require('webpack-merge')
 const setTitle = require('node-bash-title'); /// 改变提示
+const postcssPresetEnv = require('postcss-preset-env');
 setTitle('正在运行测试环境');
 const devWebpackConfig = merge(webpackConfig, {
   module:{
@@ -14,7 +15,20 @@ const devWebpackConfig = merge(webpackConfig, {
         use: [
           'style-loader',
           'css-loader',
-          'postcss-loader'
+          {
+            loader: 'postcss-loader',
+            options:{
+              ident: 'postcss',
+              plugins: function () {
+                return postcssPresetEnv({
+                  stage: 0,
+                  features: {
+                    'nesting-rules': true
+                  }
+                })
+              }
+            }
+          }
         ],
       },
       {
@@ -23,7 +37,20 @@ const devWebpackConfig = merge(webpackConfig, {
           'style-loader',
           'css-loader',
           'sass-loader',
-          'postcss-loader'
+          {
+            loader: 'postcss-loader',
+            options:{
+              ident: 'postcss',
+              plugins: function () {
+                return postcssPresetEnv({
+                  stage: 0,
+                  features: {
+                    'nesting-rules': true
+                  }
+                })
+              }
+            }
+          }
         ],
       },
     ]

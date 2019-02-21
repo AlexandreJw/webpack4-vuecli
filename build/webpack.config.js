@@ -10,13 +10,12 @@ const config = require('./config.js')
 const assist = require('./assist.js')
 module.exports = {
   context: path.resolve(__dirname, '../'),
-  entry: {
-    main: './src/main.js',
-  },
+  entry: ['@babel/polyfill', './src/main.js'],
   output: {
     path: config.get('assertRoot'),
     filename: '[name].js'
   },
+  devtool: 'eval-source-map',
   module: {
     rules: [
       {
@@ -38,7 +37,7 @@ module.exports = {
         use: {
           loader: 'url-loader',
           options: {
-            name: assist.assetPath('images/[name].[hash:7].[ext]'), // 图片输出的路径
+            name: 'images/[name].[hash:7].[ext]', // 图片输出的路径
             limit: 1 * 1024
           }
         }
@@ -70,7 +69,7 @@ module.exports = {
       cacheGroups: {
         //项目公共组件
         common: {
-          chunks: 'async',
+          chunks: 'initial',
           name: 'common',
           minChunks: 2,
           maxInitialRequests: 5,
@@ -92,6 +91,7 @@ module.exports = {
     new HtmlWebpackPlugin({
       title: 'vue',
       filename: 'index.html',
+      loading: '<div>正在加载中</div>',
       template: './src/index.html',
       inject: 'body'
     }),

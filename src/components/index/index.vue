@@ -1,8 +1,16 @@
 <template>
     <div class="home">
+<<<<<<< HEAD
     </div>
 </template>
 <style lang="scss" scoped type=text/scss>
+=======
+        <button class='button'></button>
+        <div class="bg"></div>
+    </div>
+</template>
+<style lang="scss" scoped>
+>>>>>>> 6c9db2ca3effab5c35c81415908f4e3e767288fc
     .home {
         color: yellowgreen;
         font-weight: bolder;
@@ -19,6 +27,7 @@
     }
 </style>
 <script type="es6">
+<<<<<<< HEAD
   import async from 'async'
   console.log(async)
   export default {
@@ -57,6 +66,16 @@
       }
     },
     created () {
+=======
+  export default {
+    data () {
+      return {
+        name: 'tommy'
+      }
+    },
+    created () {
+      console.log(Object.assign({name: ''}, {age: 12}))
+>>>>>>> 6c9db2ca3effab5c35c81415908f4e3e767288fc
     }
   }
 </script>
