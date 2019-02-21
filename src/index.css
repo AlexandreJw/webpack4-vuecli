@@ -1,6 +1,9 @@
-:root{
-    --color:blue;
+@custom-selector :--button button, .button;
+@custom-selector :--enter :hover, :focus;
+
+:--button {
+    border: 1px solid #ccc;
 }
-body{
-    background: var(--color);
+:--button:--enter {
+    border: 2px solid #ccc;
 }
