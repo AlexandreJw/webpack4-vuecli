@@ -11,7 +11,7 @@ export default {
     if (!connection) throw new Error('[Vue-Socket.io] cannot locate connection')
 
     let observer = new Observer(connection, store)
-
+  
     Vue.prototype.$socket = observer.Socket
 
     Vue.mixin({

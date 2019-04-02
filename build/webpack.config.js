@@ -65,7 +65,7 @@ module.exports = {
     runtimeChunk: {
       name: 'manifest'
     },
-    splitChunks: {
+    splitChunks: {  
       cacheGroups: {
         //项目公共组件
         common: {

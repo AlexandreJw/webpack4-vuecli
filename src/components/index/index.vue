@@ -1,16 +1,14 @@
 <template>
     <div class="home">
-<<<<<<< HEAD
+      <ul>
+        <li v-for="(item,index) in list" :key="index">
+          {{pickerValue}}
+        </li>
+      </ul>
+      <button @click="pop">shift</button>
     </div>
 </template>
 <style lang="scss" scoped type=text/scss>
-=======
-        <button class='button'></button>
-        <div class="bg"></div>
-    </div>
-</template>
-<style lang="scss" scoped>
->>>>>>> 6c9db2ca3effab5c35c81415908f4e3e767288fc
     .home {
         color: yellowgreen;
         font-weight: bolder;
@@ -27,7 +25,6 @@
     }
 </style>
 <script type="es6">
-<<<<<<< HEAD
   import async from 'async'
   console.log(async)
   export default {
@@ -35,8 +32,11 @@
     data () {
       return {
         user: 'teacher',
+        pickerValue:'2019-1-12',
+        list: [1,2,3,4,5,6,7,8,9]
       }
     },
+    store: {},
     sockets: {
       user: function () {
         return this.user
@@ -54,7 +54,14 @@
         },
       }
     },
+    mounted () {
+      debugger
+      this.pickerValue = this.$store.state.count
+    },
     methods: {
+      pop () {
+        this.list.pop()
+      },
       sendMessage () {
         this.$socket.emit('sendName', {name: 'hujianwei'})
       },
@@ -66,16 +73,6 @@
       }
     },
     created () {
-=======
-  export default {
-    data () {
-      return {
-        name: 'tommy'
-      }
-    },
-    created () {
-      console.log(Object.assign({name: ''}, {age: 12}))
->>>>>>> 6c9db2ca3effab5c35c81415908f4e3e767288fc
     }
   }
 </script>
